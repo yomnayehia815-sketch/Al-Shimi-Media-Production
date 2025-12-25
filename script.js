@@ -1,4 +1,4 @@
-/* ================= ELEMENTS ================= */
+
 const toggle = document.getElementById("chatbotToggle");
 const closeBtn = document.getElementById("chatbotClose");
 const windowChat = document.getElementById("chatbotWindow");
@@ -6,7 +6,7 @@ const input = document.getElementById("chatbotInput");
 const send = document.getElementById("chatbotSend");
 const messages = document.getElementById("chatbotMessages");
 
-/* ================= OPEN / CLOSE ================= */
+
 toggle.onclick = () => {
     windowChat.classList.toggle("active");
     document.body.style.overflow =
@@ -32,12 +32,10 @@ function addMsg(text, user = false) {
     messages.scrollTop = messages.scrollHeight;
 }
 
-/* ================= LANGUAGE DETECT ================= */
 function isArabic(text) {
     return /[\u0600-\u06FF]/.test(text);
 }
 
-/* ================= INTENT NORMALIZER ================= */
 function getIntent(text) {
     const msg = text.toLowerCase();
 
@@ -68,7 +66,7 @@ function getIntent(text) {
     return "unknown";
 }
 
-/* ================= BOT LOGIC (نفس الشروط – رد مزدوج لغة) ================= */
+
 function botReply(message) {
     const intent = getIntent(message);
     const arabic = isArabic(message);
@@ -96,7 +94,6 @@ function botReply(message) {
         : "Can you please tell me more? 🙂";
 }
 
-/* ================= SEND MESSAGE ================= */
 send.onclick = sendMessage;
 input.addEventListener("keypress", e => {
     if (e.key === "Enter") sendMessage();
